@@ -6,3 +6,7 @@ from .models import Post
 # Create your views here.
 class PostList(generic.ListView):
     model=Post
+    queryset=Post.objects.all().filter(status=0)
+    template_name='blog/index.html'
+    paginate_by=6
+    
