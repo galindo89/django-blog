@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from cloudinary.models import CloudinaryField
 # Create your models here.
 
 class About(models.Model):
@@ -8,6 +9,7 @@ class About(models.Model):
     created_on = models.DateTimeField(auto_now_add=True)
     updated_on = models.DateTimeField(auto_now=True)
     author= models.ForeignKey(User, on_delete=models.CASCADE, related_name='about_posts')
+    featured_image = CloudinaryField('image', default='placeholder')
     image = models.ImageField(upload_to='about/', blank=True, null=True)
     
     def __str__(self):
