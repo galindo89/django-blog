@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
-{% block content %}
+{% load crispy_forms_tags %}
 {% load static %}
+{% block content %}
 <div class="container mt-5">
   <div class="row">
     <div class="col-4 text-center">
@@ -18,7 +19,24 @@
       <!-- Updated on field goes in here -->
 
       <p class="text-end"><em>Updated on: {{ about.updated_on }}</em></p>
+
+      <div class="row">
+        <div class="col">
+          <!-- add your form here. Your submit button should
+                have the classes of btn, btn-secondary -->
+          <form method="post">
+            {{ collaborate_form | crispy }}
+            {% csrf_token %}
+            <button class="btn btn-secondary" type="submit">Submit</button>
+          </form>
+        </div>
+
+      </div>
+
+
     </div>
   </div>
+
+
 </div>
 {% endblock content %}
